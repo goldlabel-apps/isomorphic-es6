@@ -6,15 +6,15 @@ import {
     Button,
     TextField,
 } from '@material-ui/core/'
-// import { toggleAgreed } from '../redux/host/actions'
-// import { Icon } from '../theme'
+import { sendChapter } from '../../redux/chapter/actions'
+import { Icon } from '../../theme'
 
 const useStyles = makeStyles(theme => ({
-
 	messageField:{
-		width: '100%',
+		margin: theme.spacing(),
 	},
 	textField:{
+		width: '100%',
 		marginBottom: theme.spacing(),
 	},
 	grow:{
@@ -30,44 +30,66 @@ const useStyles = makeStyles(theme => ({
 }))
 
 
-
-const validate = ( input ) => {
-	return false
-}
-
 export default function ChapterField( props ) {
 	
+	let defaultValue = ``
 	const classes = useStyles() 
+	const [ value, setValue] = React.useState( defaultValue )
+	const [ valid, setValid] = React.useState( false )
 	const hostSlice = useSelector( state => state.host )
+	const chapterSlice = useSelector( state => state.chapter )
+	const { 
+		sending,
+	} = chapterSlice
+	if (sending) return <div>sending</div>
 	const { 
 		host,
 	} = hostSlice
-	
 	if ( !host ) return null
 
+	const validate = ( str ) => {
+		setValue( str )
+		if ( str.length > 2) {
+			return setValid(true)
+		} else {
+			return setValid(false)
+		}
+	}
 
 	return	<div className={ clsx( classes.messageField ) }>
 				<div className={ clsx( classes.textField ) }>
 					<TextField 
+						autoFocus
+						fullWidth
+						value={ value }
 						id={ `chapterField` }
 						className={ clsx( classes.field ) }
-			        	label={ `New chapter` }
 			        	multiline
 			        	rows={ 2 }
-			        />
+			        	variant={ `outlined` }
+			        	onChange={  ( e ) => {
+			        		e.preventDefault()
+			        		validate( e.target.value )
+			        		
+			        	}}/>
 			     </div>
-
+			     <div className={ clsx( classes.grow ) } />
+		        
 		        <Button
-		        	fullWidth={ true }
+		        	disabled={ !valid }
 		        	color={ `secondary` }
 		        	variant={ `outlined` }
 		        	onClick={ ( e ) => {
 		        		e.preventDefault()
-		        		console.log ( validate('oi oi') )
-
+		        		sendChapter ( value )
 		        	}}>
-		        	Send chapter
+		        	<Icon icon={ `talk` } color={ `secondary` } />
+		        	<span className={ clsx( classes.btnTxt ) }>
+		        		Speak.
+		        	</span>
+		        	
 		        </Button>
+
 			</div>
 	}
 

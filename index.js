@@ -1,6 +1,10 @@
 
 // Isomorphic docs https://listingslab.com/public/md/isomorphic.md
 
+// React
+import Clockwork from './react/Clockwork'
+import ChapterField from './react/ChapterField'
+
 // Const
 import { imageHaystack } from './const/imageHaystack'
 import { deviceHaystack } from './const/deviceHaystack'
@@ -11,9 +15,7 @@ import { getDeviceImg } from './node/getDeviceImg'
 import { randomCharacter } from './node/randomCharacter'
 import { randomYear } from './node/randomYear'
 
-// React
-import Clockwork from './react/Clockwork'
-import ChapterField from './react/ChapterField'
+
 
 // ES6 
 import { getImage } from './ES6/getImage'
