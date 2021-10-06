@@ -1,5 +1,3 @@
-tags: GitHub, repo, package, Git, Vanilla JS, JavaScript, Isomorphic
-
 ## Isomorphic
 
 > We love the word isomorphic. Iso - same, morphic - shape shifting
@@ -21,4 +19,9 @@ periodically pull from the master branch
 - React components
 - Node scripts
 - Vanilla JS ( ES6 )
+
+
+#### Tags
+
+GitHub, repo, package, Git, Vanilla JS, JavaScript, Isomorphic
 
