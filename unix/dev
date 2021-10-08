@@ -1,0 +1,12 @@
+#!/bin/bash
+# chmod ug+x dev
+clear
+yarn
+
+echo 'Isomorphic Dev\n'
+
+
+# ttab -t API yarn api:dev
+# ttab -t PWA yarn wp-pwa:dev
+# sleep 2
+# ttab -t ADMIN yarn wp-admin:dev

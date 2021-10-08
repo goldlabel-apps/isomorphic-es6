@@ -25,8 +25,6 @@ const useStyles = makeStyles(theme => ({
 		background: 'white',
 		margin: theme.spacing(),
 	},
-	textField:{
-	},
 	grow:{
 		flexGrow: 1,
 	},
@@ -106,19 +104,15 @@ export default function ChapterField( props ) {
 						fullWidth
 						value={ value }
 						id={ `chapterField` }
-						className={ clsx( classes.field ) }
 			        	multiline
 			        	rows={ 2 }
 			        	variant={ `outlined` }
 			        	onChange={  ( e ) => {
 			        		e.preventDefault()
 			        		validate( e.target.value )
-			        		
 			        	}}/>
 			     </div>
 			     <div className={ clsx( classes.grow ) } />
-		        
-		        
 		        </CardContent>
 
 		        <CardActions className={ clsx( classes.paddedHorz ) }>
@@ -131,6 +125,7 @@ export default function ChapterField( props ) {
 			        		e.preventDefault()
 			        		sendChapter ( value )
 			        		setValue( `` )
+			        		setValid( false )
 			        	}}>
 			        	<span className={ clsx( classes.btnTxt ) }>
 			        		Speak.

@@ -1,6 +1,9 @@
 {
   "name": "isomorphic",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "dev": "$PWD/unix/dev"
+  },
 }
